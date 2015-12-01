@@ -1,5 +1,5 @@
 
-package co.com;
+package owlig.rest;
 
 public class Motel {
 	

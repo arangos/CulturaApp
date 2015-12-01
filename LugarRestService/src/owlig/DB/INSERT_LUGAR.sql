@@ -1,0 +1,1 @@
+INSERT INTO `CulturaApp`.`Lugar` (`IDLUGAR`, `NOMBRE`, `DIRECCION`, `COORDENADAS`, `FOTO`, `CALIFICACION`, `CUPOS`) VALUES (null,?,?,?,?,?,?);
