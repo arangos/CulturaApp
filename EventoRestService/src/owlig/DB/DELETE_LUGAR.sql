@@ -1,0 +1,1 @@
+DELETE FROM `Lugar` WHERE `IDLUGAR` = ?;
