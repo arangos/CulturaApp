@@ -6,8 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
@@ -58,8 +56,9 @@ public class LugarRestService {
 			@FormParam("coordenadas") String coordenadas,
 			@FormParam("foto") String foto,
 			@FormParam("calificacion") int calificacion,
-			@FormParam("cupos") int cupos,
-			@Context HttpServletResponse servletResponse) throws IOException {
+			@FormParam("cupos") int cupos
+			//@Context HttpServletResponse servletResponse
+			) throws IOException {
 		
 		boolean exito;
 		LugarDTO lugar = new LugarDTO(nombreLugar, direccion, coordenadas, foto, calificacion, cupos);
@@ -74,7 +73,7 @@ public class LugarRestService {
 	@GET
 	@Path("/consultarlugares")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response consultarLugares(@Context ServletContext ctx) throws IOException {
+	public Response consultarLugares(/*@Context ServletContext ctx*/) throws IOException {
 				
 		Connection conexion = Conexion.getSession();
 		List<LugarDTO> listaLugares = new ArrayList<LugarDTO>();
@@ -109,8 +108,8 @@ public class LugarRestService {
 				@FormParam("foto") String foto,
 				@FormParam("calificacion") int calificacion,
 				@FormParam("cupos") int cupos,
-				@FormParam("idlugar") int idLugar,
-				@Context HttpServletResponse servletResponse) throws IOException {
+				@FormParam("idlugar") int idLugar/*,
+				@Context HttpServletResponse servletResponse*/) throws IOException {
 			
 			boolean exito;
 			LugarDTO lugar = new LugarDTO(nombreLugar, direccion, coordenadas, foto, calificacion, cupos);

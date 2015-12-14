@@ -1,0 +1,9 @@
+UPDATE Evento SET 
+NOMBRE = ?,
+TIPO = ?,
+CUPOS = ?,
+DESCRIPCION = ?,
+CALIFICACION = ?,
+NUMEROBUSQUEDAS = ?,
+FOTO = ?,
+FECHAEVENTO = ? WHERE `Evento`.`ID` = ?

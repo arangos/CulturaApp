@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Create Evento</title>
+</head>
+<body>
+	<div style="padding-left:100px;font-family: monospace;">
+		<h2>Create Evento</h2>
+		<form action="rest/CulturaApp/crearevento" method="POST">
+			<div style="width: 200px; text-align: left;">
+				<div style="padding:10px;">
+					Nombre Evento: <input name="nombreEvento" />
+				</div>
+				<div style="padding:10px;">
+					Tipo : <input name="tipoEvento" />
+				</div>
+				<div style="padding:10px;">
+					Lugar : <input name="lugarEvento" />
+				</div>
+				<div style="padding:10px;">
+					Cupos : <input name="cuposEvento" />
+				</div>
+				<div style="padding:10px;">
+					Descripcion : <input name="descripcionEvento" />
+				</div>
+				<div style="padding:10px;">
+					Calificacion : <input name="calificacion" />
+				</div>
+				<div style="padding:10px;">
+					Numero Busquedas : <input name="numeroBusquedas" />
+				</div>
+				<div style="padding:10px;">
+					Foto : <input name="fotoEvento" />
+				</div>
+				<div style="padding:10px;">
+					Fecha evento : <input name="fechaEvento" />
+				</div>
+				<div style="padding:10px;text-align:center">
+					<input class="" type="submit" value="Submit" />
+				</div>
+			</div>
+		</form>
+	</div>
+	
+<!-- 	<a href="http://jquery.com/">jQuery</a> -->
+    <script src="jQuery/jquery-2.1.4.min.js"></script>
+    <script>
+ 
+    $( document ).ready(function() {
+        $( "a" ).click(function( event ) {
+            alert( "The link will no longer take you to jquery.com" );
+            event.preventDefault();
+        });
+    });
+
+    $( document ).ready(function() {
+        $('.submit').click(function( event ) {
+        	var a = $.getJSON('rest/CulturaApp/crearlugar');
+            alert( a );
+            event.preventDefault();
+        });
+    });
+    </script>
+</body>
+</html>

@@ -7,21 +7,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import owlig.conexion.Conexion;
 import owlig.evento.EventoDTO;
@@ -33,9 +34,10 @@ public class EventoRestService {
 	private static final Logger logger = Logger.getLogger(EventoRestService.class);
 	private Conexion conexion = new Conexion();
 
-	@GET
+	@POST
 	@Path("/crearevento")
     @Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public Response crearLugar(@FormParam("nombreEvento") String nombreEvento,
 			@FormParam("tipoEvento") String tipoEvento,
 			@FormParam("lugarEvento") String lugarEvento,
@@ -44,9 +46,11 @@ public class EventoRestService {
 			@FormParam("calificacion") int calificacionEvento,
 			@FormParam("numeroBusquedas") int numeroBusquedas,
 			@FormParam("fotoEvento") String fotoEvento,
-			@FormParam("fechaEvento") DateTime fechaEvento,
-			@Context HttpServletResponse servletResponse) throws IOException {
+			@FormParam("fechaEvento") String fechaEnString/*,
+			@Context HttpServletResponse servletResponse*/) throws IOException {
 		
+		DateTimeFormatter fomatter = DateTimeFormat.forPattern("dd-MM-yyyy");
+		DateTime fechaEvento = new DateTime(fomatter.parseDateTime(fechaEnString));
 		boolean exito;
 		EventoDTO evento = new EventoDTO(nombreEvento, tipoEvento, lugarEvento, cuposEvento, descripcionEvento, calificacionEvento, numeroBusquedas, fotoEvento, fechaEvento);
 		
@@ -61,7 +65,7 @@ public class EventoRestService {
 		@GET
 		@Path("/consultareventos")
 		@Produces(MediaType.APPLICATION_JSON)
-		public Response consultarLugares(@Context ServletContext ctx) throws IOException {
+		public Response consultarLugares(/*@Context ServletContext ctx*/) throws IOException {
 					
 			Connection conexion = Conexion.getSession();
 			List<EventoDTO> listaLugares = new ArrayList<EventoDTO>();
