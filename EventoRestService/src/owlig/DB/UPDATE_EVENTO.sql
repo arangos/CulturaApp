@@ -1,6 +1,7 @@
 UPDATE Evento SET 
 NOMBRE = ?,
 TIPO = ?,
+LUGAR = ?,
 CUPOS = ?,
 DESCRIPCION = ?,
 CALIFICACION = ?,

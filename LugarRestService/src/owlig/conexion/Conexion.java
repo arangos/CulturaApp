@@ -108,7 +108,7 @@ public class Conexion {
 		boolean exito = false;
 				
 		try {
-			String sql = MetodosUtilitarios.getInstance().getStringArchivo("../DB/INSERT_EVENTO.sql");
+			String sql = MetodosUtilitarios.getInstance().getStringArchivo("../DB/INSERT_LUGAR.sql");
 			
   			  PreparedStatement preparedStmt = conexion.prepareStatement(sql);
 		      preparedStmt.setString (1, lugar.getNombre());

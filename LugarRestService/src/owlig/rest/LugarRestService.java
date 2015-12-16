@@ -88,7 +88,7 @@ public class LugarRestService {
 	}
 	
 	@DELETE
-	@Path("/eliminarevento/{id}")
+	@Path("/eliminarlugar/{id}")
 	public Response eliminarLugar(@PathParam("id")String idLugar /*@FormParam("request") String request ,  @DefaultValue("1") @FormParam("version") int version*/) throws SQLException {
 			
 			Connection conexion = Conexion.getSession();

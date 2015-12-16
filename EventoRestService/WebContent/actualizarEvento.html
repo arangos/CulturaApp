@@ -6,26 +6,35 @@
 <body>
 	<div style="padding-left:100px;font-family: monospace;">
 		<h2>Create Lugar</h2>
-		<form action="rest/CulturaApp/actualizarlugar" method="POST">
+		<form action="rest/CulturaApp/actualizarevento" method="POST">
 			<div style="width: 200px; text-align: left;">
-			<input type="hidden" name="idlugar" id="idlugar" value="1">
+			<input type="hidden" name="idEvento" id="idEvento" value="1">
 				<div style="padding:10px;">
-					Nombre Lugar: <input name="nombreLugar" value="Metropolitano de Medellin" />
+					Nombre Evento: <input name="nombreEvento" value="Flauta acustica" />
 				</div>
 				<div style="padding:10px;">
-					Direccion : <input name="direccion" value="Calle 32 sur # 47 -46" />
+					Tipo : <input name="tipoEvento" value="Maraca" />
 				</div>
 				<div style="padding:10px;">
-					Coordenadas : <input name="coordenadas" value="0,08" />
+					Lugar : <input name="lugarEvento" value="Segobia" />
 				</div>
 				<div style="padding:10px;">
-					Path Foto : <input name="foto" value="/fotos/foto.jpg" />
+					Cupos : <input name="cuposEvento" value="5" />
 				</div>
 				<div style="padding:10px;">
-					Calificacion : <input name="calificacion" value="5" />
+					Descripcion : <input name="descripcionEvento" value="flautela" />
 				</div>
 				<div style="padding:10px;">
-					Cupos : <input name="cupos" value="200"/>
+					Calificacion : <input name="calificacion" value="5"/>
+				</div>
+				<div style="padding:10px;">
+					Numero Busquedas : <input name="numeroBusquedas" value="5"/>
+				</div>
+				<div style="padding:10px;">
+					Foto : <input name="fotoEvento" value="/fotos/foto.jpg"/>
+				</div>
+				<div style="padding:10px;">
+					Fecha Evento : <input name="fechaEvento" value="04-02-2017"/>
 				</div>
 				<div style="padding:10px;text-align:center">
 					<input class="" type="submit" value="Submit" />
