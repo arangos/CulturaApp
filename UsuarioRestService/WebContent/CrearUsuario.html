@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Create Lugar</title>
+</head>
+<body>
+	<div style="padding-left:100px;font-family: monospace;">
+		<h2>Create Lugar</h2>
+		<form action="rest/CulturaApp/crearusuario" method="POST">
+			<div style="width: 200px; text-align: left;">
+				<div style="padding:10px;">
+					Primer Nombre : <input name="primerNombre" />
+				</div>
+				<div style="padding:10px;">
+					Segundo Nombre : <input name="segundoNombre" />
+				</div>
+				<div style="padding:10px;">
+					Primer Apellido : <input name="primerApellido" />
+				</div>
+				<div style="padding:10px;">
+					Segundo Apellido : <input name="segundoApellido" />
+				</div>
+				<div style="padding:10px;">
+					Path Foto : <input name="fotoUsuario" />
+				</div>
+				<div style="padding:10px;">
+					Email : <input name="emailUsuario" />
+				</div>
+				<div style="padding:10px;">
+					Celular : <input name="celular" />
+				</div>				
+				<div style="padding:10px;text-align:center">
+					<input class="" type="submit" value="Submit" />
+				</div>
+			</div>
+		</form>
+	</div>
+	
+<!-- 	<a href="http://jquery.com/">jQuery</a> -->
+    <script src="jQuery/jquery-2.1.4.min.js"></script>
+    <script>
+ 
+    $( document ).ready(function() {
+        $( "a" ).click(function( event ) {
+            alert( "The link will no longer take you to jquery.com" );
+            event.preventDefault();
+        });
+    });
+
+    $( document ).ready(function() {
+        $('.submit').click(function( event ) {
+        	var a = $.getJSON('rest/CulturaApp/crearlugar');
+            alert( a );
+            event.preventDefault();
+        });
+    });
+    </script>
+</body>
+</html>
