@@ -167,8 +167,8 @@ public class Conexion {
 			PreparedStatement preparedStmt = conexion.prepareStatement(sql);
 			preparedStmt.setString (1, idLugar);
 			preparedStmt.execute();
-					
-			
+			exitoso = true;
+			logger.info("Se elimino el registro con ID : "+idLugar +" exitosamente de la BD");
 		} catch (IOException e) {
 			logger.info("Ocurrio un error leyendo el archivo .SQL");
 			e.printStackTrace();

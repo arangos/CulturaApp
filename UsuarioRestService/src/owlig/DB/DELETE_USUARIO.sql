@@ -1,1 +1,1 @@
-DELETE FROM `Usuario` WHERE `IDusuario` = ?;
+DELETE FROM `Usuario` WHERE `IDUSUARIO` = ?;

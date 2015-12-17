@@ -34,14 +34,13 @@ public class LugarRestService {
 	Request request;
 	String id;
 
-	Motel animalService;
+
 	private Conexion conexion = new Conexion();
 	
 	public LugarRestService(UriInfo uriInfo, Request request, String id) {
 		this.uriInfo = uriInfo;
 		this.request = request;
-		this.id = id;
-		animalService = new Motel("", "", 0, 0, "");
+		this.id = id;		
 	}
 
 	private static final Logger logger = Logger.getLogger(LugarRestService.class);

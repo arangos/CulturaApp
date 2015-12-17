@@ -1,1 +1,1 @@
-INSERT INTO `CulturaApp`.`Usuario` (`IDusuario`, `Nombre`, `PrimerApellido`, `SegundoApellido`, `Foto`, `Email`, `Celular`, `SEGUNDO_NOMBRE`) VALUES (null,?,?,?,?,?,?,?);
+INSERT INTO `CulturaApp`.`Usuario` (`IDUSUARIO`, `TTPO_DOCUMENTO`, `PRIMER_NOMBRE`, `SEGUNDO_NOMBRE`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, `FOTO`, `EMAIL`, `CELULAR`) VALUES (?,?,?,?,?,?,?,?,?);

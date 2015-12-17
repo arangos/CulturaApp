@@ -46,13 +46,11 @@ public class Conexion {
 	    String driver = "com.mysql.jdbc.Driver";
 	    String userName = "root";
 	    String password = "motelapp";
-//	    Statement statement = null;
 	    
 	    try{
 	    	
 	        Class.forName(driver).newInstance();
 	        conn =  DriverManager.getConnection(url+dbName,userName,password);
-//	        statement = conn.createStatement();
 	      	        
 	        System.out.println("Connected to the database");
 	        logger.info("Connected to the database");
@@ -62,8 +60,7 @@ public class Conexion {
 	    	e.printStackTrace();
 	    }
 	    return conn;
-	}
-		
+	}		
 	
 	//Para consultas de lugares
 	public List<UsuarioDTO> consultarUsuarios(Connection conexion) throws SQLException{
@@ -76,14 +73,15 @@ public class Conexion {
 			while (rs.next()) {
 				
 				UsuarioDTO usurio = new UsuarioDTO();
-				usurio.setIdUsuario(rs.getInt("IDusuario"));
-				usurio.setPrimerNombre(rs.getString("Nombre"));
-				usurio.setPrimerApellido(rs.getString("PrimerApellido"));
-				usurio.setSegundoApellido(rs.getString("SegundoApellido"));
-				usurio.setFoto(rs.getString("Foto"));
-				usurio.setEmail(rs.getString("Email"));
-				usurio.setCelular(rs.getInt("Celular"));
-				usurio.setSegundoNombre(rs.getString("SEGUNDO_NOMBRE"));
+				usurio.setIdUsuario(rs.getInt("IDUSUARIO"));
+				usurio.setPrimerNombre(rs.getString("TTPO_DOCUMENTO"));
+				usurio.setPrimerApellido(rs.getString("PRIMER_NOMBRE"));
+				usurio.setSegundoApellido(rs.getString("SEGUNDO_NOMBRE"));
+				usurio.setSegundoNombre(rs.getString("PRIMER_APELLIDO"));
+				usurio.setSegundoNombre(rs.getString("SEGUNDO_APELLIDO"));
+				usurio.setFoto(rs.getString("FOTO"));
+				usurio.setEmail(rs.getString("EMAIL"));
+				usurio.setCelular(rs.getString("CELULAR"));
 				listaUsuarios.add(usurio);
 	        }
 
@@ -91,8 +89,7 @@ public class Conexion {
 			e.printStackTrace();
 		}		
 		return listaUsuarios;			
-	}
-	
+	}	
 	
 	/**
 	 * Metodo para insertar los nuevos lugares en BD
@@ -107,19 +104,21 @@ public class Conexion {
 			String sql = MetodosUtilitarios.getInstance().getStringArchivo("../DB/INSERT_USUARIO.sql");
 			
   			  PreparedStatement preparedStmt = conexion.prepareStatement(sql);
-		      preparedStmt.setString (1, usuario.getPrimerNombre());
-		      preparedStmt.setString (2, usuario.getPrimerApellido());
-		      preparedStmt.setString (3, usuario.getSegundoApellido());
-		      preparedStmt.setString (4, usuario.getFoto());
-		      preparedStmt.setString (5, usuario.getEmail());
-		      preparedStmt.setInt    (6, usuario.getCelular());
-		      preparedStmt.setString (7, usuario.getSegundoNombre());
+  			  preparedStmt.setLong   (1, usuario.getIdUsuario());
+  			  preparedStmt.setString (2, usuario.getTipoDocumento());
+  			  preparedStmt.setString (3, usuario.getPrimerNombre());
+  			  preparedStmt.setString (4, usuario.getSegundoNombre());
+		      preparedStmt.setString (5, usuario.getPrimerApellido());
+		      preparedStmt.setString (6, usuario.getSegundoApellido());
+		      preparedStmt.setString (7, usuario.getFoto());
+		      preparedStmt.setString (8, usuario.getEmail());
+		      preparedStmt.setString  (9, usuario.getCelular());		      
 		 
 		      preparedStmt.execute();
 		      exito = true;
-		      logger.info("Lugar Insertado en BD");
+		      logger.info("Evento Insertado en BD");
 		} catch (SQLException e) {
-			logger.info("Ocurrio una Exepcion en la insercion del Lugar "+e);			
+			logger.info("Ocurrio una Exepcion en la insercion del Evento "+e);			
 		} catch (IOException e) {
 			
 			e.printStackTrace();
@@ -133,23 +132,22 @@ public class Conexion {
 			String sql = MetodosUtilitarios.getInstance().getStringArchivo("../DB/UPDATE_USUARIO.sql");
 			
   			  PreparedStatement preparedStmt = conexion.prepareStatement(sql);
-		      preparedStmt.setString (1, lugar.getPrimerNombre());
-		      preparedStmt.setString (2, lugar.getPrimerApellido());
-		      preparedStmt.setString (3, lugar.getSegundoApellido());
-		      preparedStmt.setString (4, lugar.getFoto());
-		      preparedStmt.setString (5, lugar.getEmail());
-		      preparedStmt.setInt    (6, lugar.getCelular());
-		      preparedStmt.setString (7, lugar.getSegundoNombre());
-		      preparedStmt.setInt    (8, lugar.getIdUsuario());
+  			  preparedStmt.setString (1, lugar.getTipoDocumento());
+		      preparedStmt.setString (2, lugar.getPrimerNombre());
+		      preparedStmt.setString (8, lugar.getSegundoNombre());
+		      preparedStmt.setString (3, lugar.getPrimerApellido());
+		      preparedStmt.setString (4, lugar.getSegundoApellido());
+		      preparedStmt.setString (5, lugar.getFoto());
+		      preparedStmt.setString (6, lugar.getEmail());
+		      preparedStmt.setString (7, lugar.getCelular());		      
+		      preparedStmt.setLong   (9, lugar.getIdUsuario());
 		      
 		      preparedStmt.execute();
 		      exito = true;
-//		      conexion.close();
-		      logger.info("Lugar Insertado en BD");
+		      logger.info("Evento actualizado en BD");
 		} catch (SQLException e) {
-			logger.info("Ocurrio una Exepcion en la insercion del Lugar "+e);			
-		} catch (IOException e) {
-			
+			logger.info("Ocurrio una Exepcion en la actualizacion del usuario "+e);			
+		} catch (IOException e) {			
 			e.printStackTrace();
 		}
 		return exito;
@@ -164,8 +162,8 @@ public class Conexion {
 			PreparedStatement preparedStmt = conexion.prepareStatement(sql);
 			preparedStmt.setString (1, idUsuario);
 			preparedStmt.execute();
-					
-			
+			exitoso = true;		
+			logger.info("Se elimino el registro con ID : "+idUsuario +" exitosamente de la BD");
 		} catch (IOException e) {
 			logger.info("Ocurrio un error leyendo el archivo .SQL");
 			e.printStackTrace();

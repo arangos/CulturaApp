@@ -35,18 +35,20 @@ public class UsuarioRestService {
 	@Path("/crearusuario")
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public Response crearLugar(@FormParam("primerNombre") String primerNombre,
+	public Response crearLugar(@FormParam("idUsuario") long idUsuario,
+			@FormParam("tipoDocumento") String tipoDocumento,
+			@FormParam("primerNombre") String primerNombre,			
 			@FormParam("segundoNombre") String segundoNombre,
 			@FormParam("primerApellido") String primerApellido,
 			@FormParam("segundoApellido") String segundoApellido,
 			@FormParam("fotoUsuario") String foto,
 			@FormParam("emailUsuario") String email,
-			@FormParam("celular") int celular
+			@FormParam("celular") String celular
 			//@Context HttpServletResponse servletResponse
 			) throws IOException {
 		
 		boolean exito;
-		UsuarioDTO usuario = new UsuarioDTO(primerNombre, segundoNombre, primerApellido, segundoApellido, foto, email, celular);
+		UsuarioDTO usuario = new UsuarioDTO(idUsuario ,primerNombre, tipoDocumento, segundoNombre, primerApellido, segundoApellido, foto, email, celular);
 		Connection conexion = Conexion.getSession();
 		exito = this.conexion.crearUsuario(conexion,usuario);		
 		
@@ -78,7 +80,7 @@ public class UsuarioRestService {
 			Connection conexion = Conexion.getSession();
 			boolean exitoso = this.conexion.eliminarUsuario(conexion,idUsuario);
 		
-		return Response.ok("Se elimino correctamente el lugar"+exitoso).build();
+		return Response.ok("Se elimino correctamente el lugar "+exitoso).build();
 	}
 	
 // Por aca me llegan todos los Post de un submit
@@ -86,19 +88,20 @@ public class UsuarioRestService {
 		@Path("/actualizarusuario")
 		@Produces(MediaType.TEXT_HTML)
 		@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-		public Response actualizarLugar(@FormParam("primerNombre") String primerNombre,
+		public Response actualizarLugar(@FormParam("idUsuario") int idUsuario,
+				@FormParam("tipoDocumento") String tipoDocumento,
+				@FormParam("primerNombre") String primerNombre,				
 				@FormParam("segundoNombre") String segundoNombre,
 				@FormParam("primerApellido") String primerApellido,
 				@FormParam("segundoApellido") String segundoApellido,
 				@FormParam("fotoUsuario") String foto,
 				@FormParam("emailUsuario") String emailUsuario,
-				@FormParam("celular") int celular,
-				@FormParam("idUsuario") int idUsuario/*,
+				@FormParam("celular") String celular
+				/*,
 				@Context HttpServletResponse servletResponse*/) throws IOException {
 			
 			boolean exito;
-			UsuarioDTO usuario = new UsuarioDTO(primerNombre, segundoNombre, primerApellido, segundoApellido, foto, emailUsuario, celular);
-			usuario.setIdUsuario(idUsuario);
+			UsuarioDTO usuario = new UsuarioDTO(idUsuario ,primerNombre, tipoDocumento, segundoNombre, primerApellido, segundoApellido, foto, emailUsuario, celular);
 			Connection conexion = Conexion.getSession();
 			exito = this.conexion.actualizarUsuario(conexion,usuario);
 			

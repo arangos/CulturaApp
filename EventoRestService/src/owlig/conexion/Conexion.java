@@ -88,8 +88,7 @@ public class Conexion {
 				listaEventos.add(evento);
 	        }
 
-		} catch (SQLException e) {
-			//aca logger de errores			
+		} catch (SQLException e) {				
 			e.printStackTrace();
 		}		
 		return listaEventos;			
@@ -168,8 +167,9 @@ public class Conexion {
 			String sql = MetodosUtilitarios.getInstance().getStringArchivo("../DB/DELETE_EVENTO.sql");
 			PreparedStatement preparedStmt = conexion.prepareStatement(sql);
 			preparedStmt.setString (1, idEvento);
-			preparedStmt.execute();					
-			
+			preparedStmt.execute();
+			exitoso = true;
+			logger.info("Se elimino el registro con ID : "+idEvento +" exitosamente de la BD");
 		} catch (IOException e) {
 			logger.info("Ocurrio un error leyendo el archivo .SQL");
 			e.printStackTrace();

@@ -2,19 +2,21 @@ package owlig.usuario;
 
 public class UsuarioDTO {
 
-	private int idUsuario;
+	private long idUsuario;
+	private String tipoDocumento;
 	private String primerNombre;
 	private String segundoNombre;
 	private String primerApellido;
 	private String segundoApellido;
 	private String foto;
 	private String email;
-	private int celular;
+	private String celular;
 	
 	//Constructor ajustado
-	public UsuarioDTO(String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String foto,
-			String email, int celular) {
+	public UsuarioDTO(long idUsuario, String primerNombre, String tipoDocumento, String segundoNombre, String primerApellido, String segundoApellido, String foto,
+			String email, String celular) {
 		super();
+		this.idUsuario = idUsuario;
 		this.primerNombre = primerNombre;
 		this.segundoNombre = segundoNombre;
 		this.primerApellido = primerApellido;
@@ -22,6 +24,7 @@ public class UsuarioDTO {
 		this.foto = foto;
 		this.email = email;
 		this.celular = celular;
+		this.tipoDocumento = tipoDocumento;
 	}
 	
 	//Constructor general
@@ -29,10 +32,10 @@ public class UsuarioDTO {
 		
 	}
 	
-	public int getIdUsuario() {
+	public long getIdUsuario() {
 		return idUsuario;
 	}
-	public void setIdUsuario(int idUsuario) {
+	public void setIdUsuario(long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 	public String getPrimerNombre() {
@@ -71,11 +74,19 @@ public class UsuarioDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getCelular() {
+	public String getCelular() {
 		return celular;
 	}
-	public void setCelular(int celular) {
+	public void setCelular(String celular) {
 		this.celular = celular;
+	}
+
+	public String getTipoDocumento() {
+		return tipoDocumento;
+	}
+
+	public void setTipoDocumento(String tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
 	}
 	
 }
