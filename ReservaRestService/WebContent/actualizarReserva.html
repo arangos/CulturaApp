@@ -1,41 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Actualizar Evento</title>
+<title>Actualizar Reserva</title>
 </head>
 <body>
 	<div style="padding-left:100px;font-family: monospace;">
 		<h2>Create Lugar</h2>
-		<form action="rest/CulturaApp/actualizarevento" method="POST">
+		<form action="rest/CulturaApp/actualizarreserva" method="POST">
 			<div style="width: 200px; text-align: left;">
-			<input type="hidden" name="idEvento" id="idEvento" value="3">
-				<div style="padding:10px;">
-					Nombre Evento: <input name="nombreEvento" value="Flauta acustica" />
+			<input type="hidden" name="idReserva" id="idReserva" value="-1838510994">
+			<div style="padding:10px;">
+					Lugar reserva : <input name="lugarReserva" value="Chachahca" />
+				</div>
+			<div style="padding:10px;">
+					Fecha Reserva : <input name="fechaReserva" value="12-05-2003" />
 				</div>
 				<div style="padding:10px;">
-					Tipo : <input name="tipoEvento" value="Maraca" />
+					Lugar Evento : <input name="lugarEvento" value="La ceja"/>
 				</div>
 				<div style="padding:10px;">
-					Lugar : <input name="lugarEvento" value="Segobia" />
+					Evento reservado : <input name="eventoReserva" value="Concierto para 2" />
 				</div>
 				<div style="padding:10px;">
-					Cupos : <input name="cuposEvento" value="5" />
+					Usuario de la reserva : <input name="usuarioReserva" value="Luis"/>
 				</div>
 				<div style="padding:10px;">
-					Descripcion : <input name="descripcionEvento" value="flautela" />
-				</div>
-				<div style="padding:10px;">
-					Calificacion : <input name="calificacion" value="5"/>
-				</div>
-				<div style="padding:10px;">
-					Numero Busquedas : <input name="numeroBusquedas" value="5"/>
-				</div>
-				<div style="padding:10px;">
-					Foto : <input name="fotoEvento" value="/fotos/foto.jpg"/>
-				</div>
-				<div style="padding:10px;">
-					Fecha Evento : <input name="fechaEvento" value="04-02-2017"/>
-				</div>
+					Estado reserva : <input name="estadoReserva" value="activa"/>
+				</div>					
 				<div style="padding:10px;text-align:center">
 					<input class="" type="submit" value="Submit" />
 				</div>

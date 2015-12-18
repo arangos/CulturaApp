@@ -44,6 +44,7 @@ public class UsuarioRestService {
 			@FormParam("fotoUsuario") String foto,
 			@FormParam("emailUsuario") String email,
 			@FormParam("celular") String celular
+			//@FormParam("fechaNacimineto") String fechaNacimineto
 			//@Context HttpServletResponse servletResponse
 			) throws IOException {
 		
@@ -90,7 +91,7 @@ public class UsuarioRestService {
 		@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 		public Response actualizarLugar(@FormParam("idUsuario") int idUsuario,
 				@FormParam("tipoDocumento") String tipoDocumento,
-				@FormParam("primerNombre") String primerNombre,				
+				@FormParam("primerNombre") String primerNombre,
 				@FormParam("segundoNombre") String segundoNombre,
 				@FormParam("primerApellido") String primerApellido,
 				@FormParam("segundoApellido") String segundoApellido,
@@ -106,7 +107,7 @@ public class UsuarioRestService {
 			exito = this.conexion.actualizarUsuario(conexion,usuario);
 			
 			
-			return Response.ok("Estado actualizacion del lugar : "+exito).build();
+			return Response.ok("Estado actualizacion del lugar : " +exito).build();
 		}
 		
 }

@@ -1,41 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Actualizar Evento</title>
+<title>Create Usuario</title>
 </head>
 <body>
 	<div style="padding-left:100px;font-family: monospace;">
 		<h2>Create Lugar</h2>
-		<form action="rest/CulturaApp/actualizarevento" method="POST">
+		<form action="rest/CulturaApp/crearreserva" method="POST">
 			<div style="width: 200px; text-align: left;">
-			<input type="hidden" name="idEvento" id="idEvento" value="3">
 				<div style="padding:10px;">
-					Nombre Evento: <input name="nombreEvento" value="Flauta acustica" />
+					Lugar de la reserva : <input name="lugarReserva" />
 				</div>
 				<div style="padding:10px;">
-					Tipo : <input name="tipoEvento" value="Maraca" />
+					Fecha reserva : <input name="fechaReserva" />
 				</div>
 				<div style="padding:10px;">
-					Lugar : <input name="lugarEvento" value="Segobia" />
+					Evento reserva : <input name="eventoReserva" />
 				</div>
 				<div style="padding:10px;">
-					Cupos : <input name="cuposEvento" value="5" />
+					Usuario reserva : <input name="usuarioReserva" />
 				</div>
 				<div style="padding:10px;">
-					Descripcion : <input name="descripcionEvento" value="flautela" />
-				</div>
-				<div style="padding:10px;">
-					Calificacion : <input name="calificacion" value="5"/>
-				</div>
-				<div style="padding:10px;">
-					Numero Busquedas : <input name="numeroBusquedas" value="5"/>
-				</div>
-				<div style="padding:10px;">
-					Foto : <input name="fotoEvento" value="/fotos/foto.jpg"/>
-				</div>
-				<div style="padding:10px;">
-					Fecha Evento : <input name="fechaEvento" value="04-02-2017"/>
-				</div>
+					Estado reserva : <input name="estadoreserva" />
+				</div>				
 				<div style="padding:10px;text-align:center">
 					<input class="" type="submit" value="Submit" />
 				</div>

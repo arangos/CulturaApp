@@ -41,7 +41,8 @@ public class Conexion {
 	public static Connection startConnection()	{
 		
 	    Connection conn = null;
-	    String url = "jdbc:mysql://52.25.186.249:3306/";
+//	    String url = "jdbc:mysql://52.25.186.249:3306/";
+	    String url = "jdbc:mysql://127.0.0.1:3306/";
 	    String dbName = "CulturaApp";
 	    String driver = "com.mysql.jdbc.Driver";
 	    String userName = "root";
